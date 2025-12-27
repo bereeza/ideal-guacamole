@@ -1,0 +1,115 @@
+.page {
+  background-color: #f7f7f8; /* Фон на всю сторінку */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.chatBox {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.userRow, .aiRow {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.userRow { justify-content: flex-end; }
+.aiRow { justify-content: flex-start; }
+
+.userBubble {
+  background: #202123;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 18px 18px 2px 18px;
+  max-width: 70%;
+}
+
+.aiBubble {
+  background: white;
+  color: #000;
+  padding: 12px 18px;
+  border-radius: 18px 18px 18px 2px;
+  border: 1px solid #e5e5e5;
+  max-width: 70%;
+}
+
+.inputForm {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #000; /* Чорна рамка */
+  border-radius: 28px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.inputField {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  color: black;
+}
+
+.sendButton {
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sendButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+}
+
+.typing span {
+  width: 6px;
+  height: 6px;
+  background: #aaa;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing span:nth-child(1) { animation-delay: -0.32s; }
+.typing span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
