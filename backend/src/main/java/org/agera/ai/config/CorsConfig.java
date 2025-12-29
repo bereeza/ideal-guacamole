@@ -17,7 +17,7 @@ public class CorsConfig {
         // allow cookies to be sent with the request
         config.setAllowCredentials(true);
         // allows requests for the frontend only
-        config.addAllowedOrigin("http://localhost:3000/");
+        config.addAllowedOrigin("https://ideal-guacamole--personal-482711.us-east4.hosted.app/");
         config.addAllowedHeader("*");
 
         config.setAllowedMethods(Arrays.asList("POST"));
