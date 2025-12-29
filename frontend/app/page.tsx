@@ -28,11 +28,16 @@ export default function Home() {
         setIsTyping(true);
 
         try {
-            const response = await fetch("http://localhost:8080/api/v1/chat", {
+            const response = await fetch("https://agera-ai-568242798484.europe-west1.run.app/api/v1/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ request: input }),
             });
+            // const response = await fetch("http://localhost:8080/api/v1/chat", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json" },
+            //     body: JSON.stringify({ request: input }),
+            // });
 
             if (!response.ok) throw new Error("Server error");
 
