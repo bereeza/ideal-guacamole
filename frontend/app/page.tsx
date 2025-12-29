@@ -4,8 +4,13 @@ import { useState, useRef, useEffect } from "react";
 import { IoSend } from "react-icons/io5";
 import styles from "./page.module.css";
 
+interface Message {
+  role: 'user' | 'assistant';
+  text: string;
+}
+
 export default function Home() {
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -18,7 +23,7 @@ export default function Home() {
         scrollToBottom();
     }, [messages, isTyping]);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!input.trim() || isTyping) return;
 
