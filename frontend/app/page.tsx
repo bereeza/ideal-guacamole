@@ -27,7 +27,8 @@ export default function Home() {
         e.preventDefault();
         if (!input.trim() || isTyping) return;
 
-        const userMessage = { role: "user", text: input };
+        const userMessage: Message = { role: "user", text: input };
+        
         setMessages((prev) => [...prev, userMessage]);
         setInput("");
         setIsTyping(true);
@@ -38,13 +39,9 @@ export default function Home() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ request: input }),
             });
-            // const response = await fetch("http://localhost:8080/api/v1/chat", {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify({ request: input }),
-            // });
 
             if (!response.ok) throw new Error("Server error");
+            if (!response.body) throw new Error("No response body");
 
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
@@ -63,6 +60,8 @@ export default function Home() {
                 } else {
                     setMessages((prev) => {
                         const lastMsg = prev[prev.length - 1];
+                        if (!lastMsg || lastMsg.role !== "assistant") return prev;
+                        
                         const otherMsgs = prev.slice(0, -1);
                         return [...otherMsgs, { ...lastMsg, text: lastMsg.text + chunk }];
                     });
