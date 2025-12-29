@@ -8,7 +8,7 @@ export default function Home() {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
-    const messagesEndRef = useRef(null);
+    const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
